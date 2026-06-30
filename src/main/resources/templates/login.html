@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      class="light-style customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/assets/"
+      data-template="vertical-menu-template-free">
+
+<head th:replace="~{fragments/head :: head(titulo='Iniciar Sesion - Sistema de Productos')}"></head>
+
+<th:block>
+    <link rel="stylesheet" th:href="@{/assets/vendor/css/pages/page-auth.css}" />
+</th:block>
+
+<body>
+<div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+            <div class="card">
+                <div class="card-body">
+                    <div class="app-brand justify-content-center mb-3">
+                        <a th:href="@{/login}" class="app-brand-link gap-2">
+                            <span class="app-brand-text demo text-body fw-bolder fs-3">Productos UPIIZ</span>
+                        </a>
+                    </div>
+
+                    <h4 class="mb-2">Bienvenido</h4>
+                    <p class="mb-4">Inicia sesion para administrar el catalogo de productos</p>
+
+                    <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}">
+                        Credenciales incorrectas
+                    </div>
+
+                    <form id="formAcceso" class="mb-3" th:action="@{/login}" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                   placeholder="Ingresa tu usuario" autofocus="autofocus" required="required" />
+                        </div>
+                        <div class="mb-3 form-password-toggle">
+                            <label class="form-label" for="password">Contrasena</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="password" class="form-control" name="password"
+                                       placeholder="········" aria-describedby="password" required="required" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Iniciar sesion</button>
+                        </div>
+                    </form>
+
+                    <div class="alert alert-info small mb-0">
+                        <strong>Credenciales de prueba:</strong><br/>
+                        Administrador &#8594; <code>admin</code> / <code>admin123</code><br/>
+                        Capturista &#8594; <code>capturista</code> / <code>captura123</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>
